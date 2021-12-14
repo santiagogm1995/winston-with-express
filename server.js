@@ -17,6 +17,15 @@ const logger = winston.createLogger({
   transports: [new winston.transports.Console()],
 });
 
-app.listen(process.env.PORT, () => {
-  logger.info("system", `Server running on port ${process.env.PORT}`);
+//Create router
+const router = express.Router();
+router.get("/", (req, res) => {
+  logger.info("Hello world");
+  res.send("Hello world");
+});
+
+app.use(router);
+
+app.listen(3000, () => {
+  logger.info(`Server running on port ${3000}`);
 });
